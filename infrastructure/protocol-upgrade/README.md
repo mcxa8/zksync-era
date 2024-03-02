@@ -30,8 +30,7 @@ If not provided as arguments, the tool can retrieve certain values from environm
 7. `environment` - By default, set to `localhost`. Always specify it explicitly. Possible values: `localhost`,
    `testnet2`, `stage2`, `mainnet2`. Each upgrade on different environments is performed separately since the contract
    addresses differ between environments.
-8. `private-key` - If not specified, the default key from the default mnemonic will be used. Always specify it
-   explicitly.
+
 
 ### Create a Protocol Upgrade Proposal
 
@@ -69,7 +68,9 @@ $ zk f yarn start facets deploy-all \
 This command will also generate facet cuts for all facets.
 
 Alternatively, you can deploy facets individually using the following command:
-
+8. `private-key` - If not specified, the default key from the default mnemonic will be used. Always specify it
+   explicitly.
+   
 ```bash
 $ zk f yarn start facets deploy \
 --private-key <private-key> \
@@ -114,7 +115,8 @@ $ zk f yarn start system-contracts publish-all \
 --nonce <nonce> \
 --environment <environment>
 ```
-
+8. `private-key` - If not specified, the default key from the default mnemonic will be used. Always specify it
+   explicitly.
 Alternatively, you can deploy them individually using the following command:
 
 ```bash
