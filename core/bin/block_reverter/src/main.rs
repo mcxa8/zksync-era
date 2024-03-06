@@ -17,6 +17,7 @@ use zksync_types::{L1BatchNumber, U256};
 struct Cli {
     #[command(subcommand)]
     command: Command,
+    // Comments: no need for now
 }
 
 #[derive(Debug, Subcommand)]
@@ -50,6 +51,7 @@ enum Command {
         /// L1 batch number used to rollback to.
         #[arg(long)]
         l1_batch_number: u32,
+        // keep clean
         /// Flag that specifies if Postgres DB should be rolled back.
         #[arg(long)]
         rollback_postgres: bool,
@@ -77,6 +79,7 @@ async fn main() -> anyhow::Result<()> {
         .log_format
         .parse()
         .context("Invalid log format")?;
+    //that's bullshit
 
     let mut builder = vlog::ObservabilityBuilder::new().with_log_format(log_format);
     if let Some(sentry_url) = observability_config.sentry_url {
@@ -86,7 +89,7 @@ async fn main() -> anyhow::Result<()> {
             .with_sentry_environment(observability_config.sentry_environment);
     }
     let _guard = builder.build();
-
+    //what hell is that?
     let eth_sender = ETHSenderConfig::from_env().context("ETHSenderConfig::from_env()")?;
     let db_config = DBConfig::from_env().context("DBConfig::from_env()")?;
     let eth_client = ETHClientConfig::from_env().context("ETHClientConfig::from_env()")?;
@@ -95,7 +98,7 @@ async fn main() -> anyhow::Result<()> {
     let contracts = ContractsConfig::from_env().context("ContractsConfig::from_env()")?;
     let postgres_config = PostgresConfig::from_env().context("PostgresConfig::from_env()")?;
     let config = BlockReverterEthConfig::new(eth_sender, contracts, eth_client.web3_url.clone());
-
+    //holly shit
     let connection_pool = ConnectionPool::builder(
         postgres_config.master_url()?,
         postgres_config.max_connections()?,
